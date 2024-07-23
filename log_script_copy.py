@@ -62,7 +62,7 @@ def get_running_apps():
 
 def perform_security_check():
     try:
-        process = subprocess.Popen(["/opt/homebrew/bin/nmap", "127.0.0.1"], stdout=subprocess.PIPE)
+        process = subprocess.Popen(["/opt/homebrew/bin/nmap", "your own here"], stdout=subprocess.PIPE)
         output, _ = process.communicate()
         return output.decode("utf-8")
     except Exception as e:
@@ -74,7 +74,7 @@ def send_email(subject, body, to_email, from_email, app_specific_password):
         msg['From'] = from_email
         msg['To'] = to_email
         msg['Subject'] = subject
-        msg.attach(MIMEText(body, 'html'))  # Use 'html' instead of 'plain'
+        msg.attach(MIMEText(body, 'html'))  
         server = smtplib.SMTP('smtp.mail.me.com', 587)
         server.starttls()
         server.login(from_email, app_specific_password)
