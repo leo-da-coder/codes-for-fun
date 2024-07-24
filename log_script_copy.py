@@ -223,7 +223,7 @@ def create_log_file():
 
     subject = "System Log Report"
     to_email = "EMAIL RECIPIENT HERE"
-    from_email = "EMAIL RECIEVER HERE"
+    from_email = "EMAIL SENDER HERE"
 
     send_email(subject, log_data, to_email, from_email, APP_SPECIFIC_PASSWORD)
 
