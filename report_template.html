@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>s
+    <title>Data Analysis Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 8px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>Data Analysis Report</h1>
+
+    <h2>Summary Statistics</h2>
+    {{ summary | safe }}
+
+    <h2>Correlation Matrix</h2>
+    {{ correlation_matrix | safe }}
+
+    <h2>T-Test Results</h2>
+    <p>T-Statistic: {{ t_stat }}</p>
+    <p>P-Value: {{ p_value }}</p>
+
+    {% if chi2 is not none %}
+    <h2>Chi-Squared Test Results</h2>
+    <p>Chi-Squared: {{ chi2 }}</p>
+    <p>P-Value: {{ chi2_p_value }}</p>
+    {% endif %}
+
+    {% if pearson_corr is not none %}
+    <h2>Pearson Correlation Results</h2>
+    <p>Correlation Coefficient: {{ pearson_corr }}</p>
+    <p>P-Value: {{ pearson_p_value }}</p>
+    {% endif %}
+
+    {% if anova_f_stat is not none %}
+    <h2>ANOVA Test Results</h2>
+    <p>F-Statistic: {{ anova_f_stat }}</p>
+    <p>P-Value: {{ anova_p_value }}</p>
+    {% endif %}
+
+    <h2>Machine Learning Model Evaluation</h2>
+    {% for name, result in model_results.items() %}
+    <h3>{{ name }}</h3>
+    <p>Mean Squared Error: {{ result['mse'] }}</p>
+    <p>R-Squared: {{ result['r2'] }}</p>
+    {% endfor %}
+</body>
+</html>

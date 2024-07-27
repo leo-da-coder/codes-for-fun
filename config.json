@@ -1,0 +1,7 @@
+{
+    "password": "your_password",
+    "data_file": "data.csv",
+    "clean_data_file": "clean_data.csv",
+    "results_file": "results.txt",
+    "report_file": "report.html"
+}
